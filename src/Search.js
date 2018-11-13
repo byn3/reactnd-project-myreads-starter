@@ -8,31 +8,31 @@ class Search extends Component {
 
   state = {
     query : "",
-    matched: []
+    matchedBooks: []
   }
 
   updateQuery = (query) => {
-    let splitQuery = query.replace(/^\s+/, '')
-    this.setState({query: splitQuery})
+    this.setState({query: query})
     this.fetchMatched(query)
   }
 
   fetchMatched = (query) => {
-    if (query.length) {
-      BooksAPI.search(query).then((matched) => {
-          if (matched.error){
-            this.setState({matched: [] })
+    if (query.length != 0) {
+      BooksAPI.search(query).then((matchedBooks) => {
+          if (matchedBooks.error){
+            this.setState({matchedBooks: [] })
           } else {
-            this.setState({matched: matched})
+            this.setState({matchedBooks: matchedBooks})
           }
         }
       )
     } else {
-      this.setState({matched: []})
+      this.setState({matchedBooks: [] })
     }
   }
 
     render() {
+
       return(
         <div className="search-books">
             <div className="search-books-bar">
@@ -42,37 +42,38 @@ class Search extends Component {
                  type="text"
                  placeholder="Input a title or author"
                  value={this.state.query}
-                 onChange={(e) => this.updateQuery(e.target.value)}
+                 onChange={(event) => this.updateQuery(event.target.value)}
                   />
             </div>
        </div>
        <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.matched.map(matched => {
-              let temp = "None"
+            {this.state.matchedBooks.map(matchedBook => {
+              let shelf = "none"
+
               this.props.books.forEach(book => {
-                if (book.id !== matched.id) {
-                  matched.temp = "None"
+                if (book.id !== matchedBook.id) {
+                    matchedBook.shelf = "none"
                 } else {
-                  temp = book.temp
+                    shelf = book.shelf
                 }
               })
             return (
-              <li key={matched.id}>
+              <li key={matchedBook.id}>
                 <Book
-                    book={matched}
+                    book={matchedBook}
                     changeShelf={this.props.changeShelf}
-                    curShelf={temp}
+                    currentShelf={shelf}
                 />
              </li>
-            )
-            })
+              )
             }
+          )
+          }
             </ol>
           </div>
         </div>
-      );
-    }
+    )};
 }
 
 
