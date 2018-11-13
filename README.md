@@ -7,7 +7,8 @@ To get started:
 
 There may be a bug where you may need npm install react-router-dom also.
 
-
+## Thanks to all Who I got help from
+To all the wonderful walkthroughs and guides. Kenjournal, Maeva, Andrew Wong, Ryan, Kehinde, and Forrest. Especially Doug Brown, project coach for personally looking through and helping me when I got stuck with an issue.
 
 
 # MyReads Project
