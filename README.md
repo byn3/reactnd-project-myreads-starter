@@ -1,8 +1,8 @@
 # Keep track of books using 3 categories: read, currently reading, and want to read (past, present, future).
 
 ![The front page, lists all the books you have read, is reading, and want to read.](https://github.com/byn3/reactnd-project-myreads-starter/blob/master/Books1.png)
-
-### The search page when a user wants to add or look up a book
+--
+## The search page when a user wants to add or look up a book
 ![Added a search page](https://github.com/byn3/reactnd-project-myreads-starter/blob/master/Books2.png)
 
 
